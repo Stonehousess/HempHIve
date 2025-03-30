@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hemp Hive</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #cfd1d4; /* Cool grey background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 215, 0, 0.89); /* Yellow with 89% opacity */
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        .hex-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 120px);
+            grid-template-rows: repeat(5, 120px);
+            gap: 5px;
+            position: relative;
+        }
+
+        .hex {
+            width: 120px;
+            height: 120px;
+            background-color: rgba(0, 128, 0, 0.8); /* Green buttons */
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 0.6; /* Faded at edges */
+            font-size: 18px;
+            text-align: center;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .hex:hover {
+            background-color: #90ee90; /* Lighter green on hover */
+            box-shadow: 0px 0px 15px rgba(144, 238, 144, 0.9); /* Glow effect */
+            transform: scale(1.05); /* Slight zoom effect */
+            font-weight: bold;
+            letter-spacing: 1px; /* Indent effect */
+            opacity: 1; /* Full opacity on hover */
+        }
+
+        /* Central hexagon - larger size */
+        .hex.central {
+            width: 140px;
+            height: 140px;
+            background-color: #ffa500; /* Orange tone for visibility */
+            opacity: 1; /* Full opacity */
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        /* Connected hexagons */
+        .hex:nth-child(1) { grid-column: 2; grid-row: 2; }
+        .hex:nth-child(2) { grid-column: 3; grid-row: 2; }
+        .hex:nth-child(3) { grid-column: 4; grid-row: 2; }
+        .hex:nth-child(4) { grid-column: 2; grid-row: 3; }
+        .hex:nth-child(5) { grid-column: 4; grid-row: 3; }
+        .hex:nth-child(6) { grid-column: 2; grid-row: 4; }
+        .hex:nth-child(7) { grid-column: 3; grid-row: 4; }
+        .hex:nth-child(8) { grid-column: 4; grid-row: 4; }
+
+        /* Fade effect towards the edge */
+        .hex:nth-child(1), .hex:nth-child(3), .hex:nth-child(6), .hex:nth-child(8) {
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    HEMP HIVE
+</header>
+
+<div class="container">
+    <div class="hex-grid">
+        <div class="hex">About Us</div>
+        <div class="hex">Current Ops</div>
+        <div class="hex">Sustainability</div>
+        <div class="hex">Community</div>
+        <div class="hex central" onclick="openShop()">Shop</div>
+        <div class="hex">Medical</div>
+        <div class="hex">Resources</div>
+        <div class="hex">News</div>
+        <div class="hex">Future Plans</div>
+    </div>
+</div>
+
+<!-- Shop Section -->
+<div class="shop-section" id="shopSection">
+    <h1>Welcome to the Hemp Hive Shop!</h1>
+    <p>Shop coming soon...</p>
+    <button class="close-btn" onclick="closeShop()">Close</button>
+</div>
+
+<script>
+    function openShop() {
+        document.getElementById('shopSection').style.display = 'flex';
+    }
+
+    function closeShop() {
+        document.getElementById('shopSection').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
