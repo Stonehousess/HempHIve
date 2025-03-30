@@ -44,24 +44,7 @@
       50% { opacity: 0.8; }
     }
 
-    /* Shimmer overlay: TOP TO BOTTOM */
-    .shimmer {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.08), transparent);
-      animation: shimmerMove 5s linear infinite;
-      mix-blend-mode: screen;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    @keyframes shimmerMove {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100%); }
-    }
-
+    /* Central emoji */
     .center-container {
       position: absolute;
       top: 100px;
@@ -71,8 +54,10 @@
     }
 
     .hex {
-      width: 120px;
-      height: 120px;
+      width: 12vw;
+      height: 12vw;
+      max-width: 120px;
+      max-height: 120px;
       color: white;
       font-size: 3rem;
       text-align: center;
@@ -95,7 +80,7 @@
       opacity: 0;
     }
 
-    /* HIVE GRID */
+    /* Hive grid layout */
     .hive {
       position: absolute;
       top: 50%;
@@ -105,13 +90,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2vh;
+      gap: 1.5vh; /* reduced vertical space between rows */
     }
 
     .hex-row {
       display: flex;
       justify-content: center;
-      gap: 2vw;
+      gap: 2vw; /* horizontal spacing between hexes */
     }
 
     .hex-button {
@@ -119,7 +104,7 @@
       height: 10.4vw;
       max-width: 120px;
       max-height: 104px;
-      background: rgba(255, 204, 51, 0.0); /* initially invisible */
+      background: rgba(255, 204, 51, 0.0); /* invisible until hovered */
       color: #fff;
       display: flex;
       align-items: center;
@@ -146,8 +131,13 @@
     }
 
     @media (max-width: 768px) {
+      .hex,
       .hex-button {
         width: 16vw;
+        height: 16vw;
+      }
+
+      .hex-button {
         height: 13.8vw;
       }
     }
@@ -155,16 +145,15 @@
 </head>
 <body>
 
-  <!-- Visual Overlays -->
+  <!-- Visual Overlay -->
   <div class="glow-overlay"></div>
-  <div class="shimmer"></div>
 
   <!-- Center Hex Emoji -->
   <div class="center-container">
     <div class="hex" id="hex">🌿🐝</div>
   </div>
 
-  <!-- Hive Button Grid -->
+  <!-- Hive Grid -->
   <div class="hive">
     <div class="hex-row">
       <div class="hex-button">About</div>
@@ -183,7 +172,7 @@
     </div>
   </div>
 
-  <!-- Fade-out script -->
+  <!-- Emoji Fade-Out -->
   <script>
     setTimeout(() => {
       document.getElementById('hex').classList.add('fade-out');
