@@ -27,24 +27,23 @@
       position: relative;
     }
 
-    /* Glow overlay */
+    /* Glow overlay – reduced intensity */
     .glow-overlay {
       position: absolute;
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(255, 204, 51, 0.08), rgba(0,0,0,0));
+      background: radial-gradient(circle, rgba(255, 204, 51, 0.04), rgba(0,0,0,0));
       animation: subtleGlow 30s ease-in-out infinite;
       pointer-events: none;
       z-index: 1;
     }
 
     @keyframes subtleGlow {
-      0%, 100% { opacity: 0.4; }
-      50% { opacity: 0.8; }
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.4; }
     }
 
-    /* Central emoji */
     .center-container {
       position: absolute;
       top: 100px;
@@ -80,7 +79,7 @@
       opacity: 0;
     }
 
-    /* Hive grid layout */
+    /* Hive layout */
     .hive {
       position: absolute;
       top: 50%;
@@ -90,13 +89,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.5vh; /* reduced vertical space between rows */
+      gap: 0.8vh; /* reduced vertical spacing */
     }
 
     .hex-row {
       display: flex;
       justify-content: center;
-      gap: 2vw; /* horizontal spacing between hexes */
+      gap: 2vw;
     }
 
     .hex-button {
@@ -104,7 +103,7 @@
       height: 10.4vw;
       max-width: 120px;
       max-height: 104px;
-      background: rgba(255, 204, 51, 0.0); /* invisible until hovered */
+      background: rgba(255, 204, 51, 0.0);
       color: #fff;
       display: flex;
       align-items: center;
@@ -145,15 +144,15 @@
 </head>
 <body>
 
-  <!-- Visual Overlay -->
+  <!-- Glow effect -->
   <div class="glow-overlay"></div>
 
-  <!-- Center Hex Emoji -->
+  <!-- Top emoji -->
   <div class="center-container">
     <div class="hex" id="hex">🌿🐝</div>
   </div>
 
-  <!-- Hive Grid -->
+  <!-- Hive grid -->
   <div class="hive">
     <div class="hex-row">
       <div class="hex-button">About</div>
@@ -172,7 +171,7 @@
     </div>
   </div>
 
-  <!-- Emoji Fade-Out -->
+  <!-- Fade out top emoji -->
   <script>
     setTimeout(() => {
       document.getElementById('hex').classList.add('fade-out');
