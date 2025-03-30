@@ -12,6 +12,13 @@
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
       overflow: hidden;
+      background: black;
+      animation: bgFade 3s ease-in-out forwards;
+    }
+
+    @keyframes bgFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     body {
@@ -57,9 +64,9 @@
 
     .center-container {
       position: absolute;
-      top: 50%;
+      top: 100px;
       left: 50%;
-      transform: translate(-50%, calc(-50% + 10px));
+      transform: translateX(-50%);
       z-index: 3;
     }
 
@@ -95,19 +102,27 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 2vh;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    body:hover .hive {
+      opacity: 1;
     }
 
     .hex-row {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 2vw;
     }
 
     .hex-button {
-      width: 100px;
-      height: 86px;
-      background: rgba(0, 0, 0, 0.6);
+      width: 12vw;
+      height: 10.4vw;
+      max-width: 120px;
+      max-height: 104px;
+      background: rgba(255, 204, 51, 0.3);
       color: #fff;
       display: flex;
       align-items: center;
@@ -121,13 +136,25 @@
       );
       border: 2px solid #ffcc33;
       text-shadow: 0 0 10px #ffcc33, 0 0 20px #ff9900;
-      transition: transform 0.3s ease, background 0.3s ease;
+      transition: transform 0.4s ease, background 0.4s ease, opacity 0.4s ease;
       cursor: pointer;
+      opacity: 0;
+    }
+
+    body:hover .hex-button {
+      opacity: 1;
     }
 
     .hex-button:hover {
       transform: scale(1.05);
-      background: rgba(255, 204, 51, 0.2);
+      background: rgba(255, 204, 51, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .hex-button {
+        width: 16vw;
+        height: 13.8vw;
+      }
     }
   </style>
 </head>
@@ -137,23 +164,23 @@
   <div class="glow-overlay"></div>
   <div class="shimmer"></div>
 
-  <!-- Center Hex Emoji (fades out after 10s) -->
+  <!-- Center Emoji -->
   <div class="center-container">
     <div class="hex" id="hex">🌿🐝</div>
   </div>
 
-  <!-- Hive Button Grid -->
+  <!-- Hive Grid with Shop & Med Swapped -->
   <div class="hive">
     <div class="hex-row">
       <div class="hex-button">About</div>
     </div>
     <div class="hex-row">
       <div class="hex-button">Ops</div>
-      <div class="hex-button">Shop</div>
+      <div class="hex-button">Med</div>
     </div>
     <div class="hex-row">
       <div class="hex-button">Comm</div>
-      <div class="hex-button">Med</div>
+      <div class="hex-button">Shop</div>
       <div class="hex-button">Resrc</div>
     </div>
     <div class="hex-row">
@@ -161,11 +188,11 @@
     </div>
   </div>
 
-  <!-- JS to fade out emoji hex -->
+  <!-- Emoji Fade Script -->
   <script>
     setTimeout(() => {
       document.getElementById('hex').classList.add('fade-out');
-    }, 10000); // Fade after 10s
+    }, 10000);
   </script>
 
 </body>
