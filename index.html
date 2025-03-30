@@ -6,7 +6,7 @@
   <title>🌿Hemp Hive🐝</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
       height: 100%;
@@ -26,10 +26,18 @@
     h1 {
       color: white;
       font-size: 3rem;
+      text-align: center;
       text-shadow: 0 0 10px #ffcc33, 0 0 20px #ff9900;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 1rem 2rem;
-      border-radius: 15px;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.5);
+      clip-path: polygon(
+        30% 0%, 70% 0%, 
+        100% 30%, 100% 70%, 
+        70% 100%, 30% 100%, 
+        0% 70%, 0% 30%
+      );
+      border: 2px solid #ffcc33;
+      border-radius: 12px;
     }
 
     @keyframes pulseGlow {
