@@ -20,7 +20,7 @@
       position: relative;
     }
 
-    /* Subtle glow overlay */
+    /* Glow overlay */
     .glow-overlay {
       position: absolute;
       top: 0; left: 0;
@@ -43,7 +43,7 @@
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.08), transparent);
       animation: shimmerMove 5s linear infinite;
       mix-blend-mode: screen;
       z-index: 2;
@@ -59,14 +59,21 @@
       }
     }
 
-    .hex {
-      position: relative;
+    .center-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, calc(-50% + 10px)); /* lowered by 10px */
       z-index: 3;
+    }
+
+    .hex {
+      display: inline-block;
       color: white;
       font-size: 3rem;
       text-align: center;
       text-shadow: 0 0 10px #ffcc33, 0 0 20px #ff9900;
-      padding: 2rem;
+      padding: 1rem 1.5rem;
       background: rgba(0, 0, 0, 0.5);
       clip-path: polygon(
         25% 5%, 75% 5%, 
@@ -76,7 +83,6 @@
       border: 2px solid #ffcc33;
       border-radius: 12px;
       transition: opacity 1s ease-out;
-      margin-top: 10px;
     }
 
     .hex.fade-out {
@@ -87,7 +93,9 @@
 <body>
   <div class="glow-overlay"></div>
   <div class="shimmer"></div>
-  <div class="hex" id="hex">🌿🐝</div>
+  <div class="center-container">
+    <div class="hex" id="hex">🌿🐝</div>
+  </div>
 
   <script>
     setTimeout(() => {
